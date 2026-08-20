@@ -66,6 +66,8 @@ export const en = {
       "Beautiful flower arrangements and bouquets, perfect for birthdays, anniversaries, gifts and celebrations. Fresh flowers made to order — see the latest arrangements on our Telegram channel.",
     flowersNote: "💐 Fresh flower arrangements for every occasion — message us to discuss.",
     flowersCta: "See flower photos & prices",
+    galleryTitle: "Real cakes & flowers from CK Cake & Flower",
+    galleryText: "These are real product photos. Tap any photo to see the latest designs and prices on our Telegram channel.",
     flowerTags: ["Bouquets", "Arrangements", "Gifts", "Celebrations"],
     helpPrefix: "Ready to order or have a question? Message",
     helpSuffix: "on Telegram and we'll help you.",

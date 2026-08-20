@@ -1,4 +1,4 @@
-import { Cake, Clock, MapPin, Heart } from "lucide-react";
+import { Clock, MapPin, Heart } from "lucide-react";
 import {
   NAV_LINKS,
   TELEGRAM_CHANNEL_URL,
@@ -8,6 +8,7 @@ import {
 import { TelegramIcon } from "@/components/icons";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLang } from "@/i18n/LanguageContext";
+import logo from "@/assets/ck-cake-logo.png";
 
 export default function Footer() {
   const { t } = useLang();
@@ -19,9 +20,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-400 to-rose-600 text-white shadow-lift">
-                <Cake className="h-5 w-5" />
-              </span>
+              <img
+                src={logo}
+                alt="CK Cake & Flower"
+                className="h-12 w-12 shrink-0 rounded-full object-cover shadow-lift"
+              />
               <span className="leading-tight">
                 <span className="block font-display text-lg font-bold text-white">{t.common.brand}</span>
                 <span className="block text-[0.65rem] font-bold uppercase tracking-[0.22em] text-rose-300">

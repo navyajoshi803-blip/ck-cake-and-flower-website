@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Cake, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { NAV_LINKS, TELEGRAM_CONTACT_URL } from "@/data/site";
 import { TelegramIcon } from "@/components/icons";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLang } from "@/i18n/LanguageContext";
+import logo from "@/assets/ck-cake-logo.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -27,9 +28,11 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 sm:h-[4.5rem] sm:px-6">
         <a href="#home" className="group flex items-center gap-2.5" aria-label="CK Cake & Flower — home">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-400 to-rose-600 text-white shadow-soft transition-transform group-hover:scale-105">
-            <Cake className="h-5 w-5" />
-          </span>
+          <img
+            src={logo}
+            alt="CK Cake & Flower"
+            className="h-12 w-12 shrink-0 rounded-full object-cover shadow-soft transition-transform group-hover:scale-105 sm:h-14 sm:w-14"
+          />
           <span className="leading-tight">
             <span className="block font-display text-base font-bold text-cocoa-900 sm:text-lg">
               CK Cake &amp; Flower

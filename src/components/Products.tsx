@@ -1,6 +1,18 @@
 import { ArrowRight, Cake, Camera, Flower2, MessageCircle } from "lucide-react";
 import { SectionHeading, Reveal } from "@/components/ui";
 import { FLAVOUR_KEYS, TELEGRAM_CHANNEL_URL, TELEGRAM_CONTACT_URL, TELEGRAM_HANDLE } from "@/data/site";
+import specialCake from "@/assets/products/special-cake.jpg";
+import strawberryGoldCake from "@/assets/products/strawberry-gold-cake.jpg";
+import cutePinkCake from "@/assets/products/cute-pink-cake.jpg";
+import fruitChocolateCake from "@/assets/products/fruit-chocolate-cake.jpg";
+import redVelvet from "@/assets/products/red-velvet.jpg";
+import heartBrownie from "@/assets/products/heart-brownie.jpg";
+import brownie from "@/assets/products/brownie.jpg";
+import cakeFlowerSet from "@/assets/products/cake-flower-set.jpg";
+import redRoseBouquet from "@/assets/products/red-rose-bouquet.jpg";
+import cakeFlowerGift from "@/assets/products/cake-flower-gift.jpg";
+import heartRedCake from "@/assets/products/heart-red-cake.jpg";
+import roseBouquet from "@/assets/products/rose-bouquet.jpg";
 import { TelegramIcon } from "@/components/icons";
 import { useLang } from "@/i18n/LanguageContext";
 
@@ -47,6 +59,47 @@ export default function Products() {
                 {t.common.viewProductsOnTelegram}
               </a>
             </div>
+          </div>
+        </Reveal>
+
+        {/* Real product photos */}
+        <Reveal className="mt-10">
+          <div className="mb-5 text-center">
+            <h3 className="font-display text-2xl font-bold text-cocoa-900 sm:text-3xl">
+              {t.products.galleryTitle}
+            </h3>
+            <p className="mx-auto mt-2 max-w-2xl text-sm text-cocoa-500">{t.products.galleryText}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {[
+              [specialCake, "Real cake photo"],
+              [strawberryGoldCake, "Real cake photo"],
+              [cutePinkCake, "Real cake photo"],
+              [fruitChocolateCake, "Real cake photo"],
+              [redVelvet, "Real cake photo"],
+              [heartBrownie, "Real cake photo"],
+              [brownie, "Real cake photo"],
+              [cakeFlowerSet, "Cake and flower gift set"],
+              [redRoseBouquet, "Real flower bouquet"],
+              [cakeFlowerGift, "Cake and flower gift set"],
+              [heartRedCake, "Real cake photo"],
+              [roseBouquet, "Real flower bouquet"],
+            ].map(([src, alt]) => (
+              <a
+                key={src as string}
+                href={TELEGRAM_CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group overflow-hidden rounded-2xl bg-white shadow-card"
+              >
+                <img
+                  src={src as string}
+                  alt={alt as string}
+                  className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </a>
+            ))}
           </div>
         </Reveal>
 
