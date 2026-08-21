@@ -1,4 +1,3 @@
-```tsx
 import {
   createContext,
   useCallback,
@@ -28,13 +27,18 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-/** English by default; Khmer only if the browser language is Khmer. */
 function detectInitialLang(): Lang {
   if (typeof window === "undefined") return "en";
 
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "en" || stored === "km" || stored === "zh" || stored === "ko") {
+
+    if (
+      stored === "en" ||
+      stored === "km" ||
+      stored === "zh" ||
+      stored === "ko"
+    ) {
       return stored;
     }
   } catch {
@@ -43,22 +47,44 @@ function detectInitialLang(): Lang {
 
   const langs = [navigator.language, ...(navigator.languages ?? [])];
 
-  if (langs.some((l) => typeof l === "string" && l.toLowerCase().startsWith("km"))) {
+  if (
+    langs.some(
+      (l) =>
+        typeof l === "string" &&
+        l.toLowerCase().startsWith("km")
+    )
+  ) {
     return "km";
   }
 
-  if (langs.some((l) => typeof l === "string" && l.toLowerCase().startsWith("ko"))) {
-    return "ko";
+  if (
+    langs.some(
+      (l) =>
+        typeof l === "string" &&
+        l.toLowerCase().startsWith("zh")
+    )
+  ) {
+    return "zh";
   }
 
-  if (langs.some((l) => typeof l === "string" && l.toLowerCase().startsWith("zh"))) {
-    return "zh";
+  if (
+    langs.some(
+      (l) =>
+        typeof l === "string" &&
+        l.toLowerCase().startsWith("ko")
+    )
+  ) {
+    return "ko";
   }
 
   return "en";
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+export function LanguageProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [lang, setLangState] = useState<Lang>(detectInitialLang);
 
   useEffect(() => {
@@ -68,18 +94,25 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       /* ignore write failures */
     }
 
-    document.documentElement.lang = lang;
-    document.documentElement.classList.toggle("lang-km", lang === "km");
+    document.documentElement.lang = DICTIONARIES[lang].htmlLang;
+    document.documentElement.classList.toggle(
+      "lang-km",
+      lang === "km"
+    );
   }, [lang]);
 
-  const setLang = useCallback((next: Lang) => setLangState(next), []);
+  const setLang = useCallback(
+    (next: Lang) => setLangState(next),
+    []
+  );
 
   const toggleLang = useCallback(
     () =>
-      setLangState((current) => {
-        const languages: Lang[] = ["en", "km", "zh", "ko"];
-        const index = languages.indexOf(current);
-        return languages[(index + 1) % languages.length];
+      setLangState((l) => {
+        if (l === "en") return "km";
+        if (l === "km") return "zh";
+        if (l === "zh") return "ko";
+        return "en";
       }),
     []
   );
@@ -106,9 +139,10 @@ export function useLang(): LanguageContextValue {
   const ctx = useContext(LanguageContext);
 
   if (!ctx) {
-    throw new Error("useLang must be used inside a LanguageProvider");
+    throw new Error(
+      "useLang must be used inside a LanguageProvider"
+    );
   }
 
   return ctx;
 }
-```
