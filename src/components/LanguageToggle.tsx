@@ -8,11 +8,36 @@ import { zh } from "@/i18n/zh";
 import { ko } from "@/i18n/ko";
 import { cn } from "@/utils/cn";
 
-const OPTIONS: { code: Lang; flag: string; label: string; short: string }[] = [
-  { code: "en", flag: en.flag, label: en.label, short: en.shortLabel },
-  { code: "km", flag: km.flag, label: km.label, short: km.shortLabel },
-  { code: "zh", flag: zh.flag, label: zh.label, short: zh.shortLabel },
-  { code: "ko", flag: ko.flag, label: ko.label, short: ko.shortLabel },
+const OPTIONS: {
+  code: Lang;
+  flag: string;
+  label: string;
+  short: string;
+}[] = [
+  {
+    code: "en",
+    flag: en.flag,
+    label: en.label,
+    short: en.shortLabel,
+  },
+  {
+    code: "km",
+    flag: km.flag,
+    label: km.label,
+    short: km.shortLabel,
+  },
+  {
+    code: "zh",
+    flag: zh.flag,
+    label: zh.label,
+    short: zh.shortLabel,
+  },
+  {
+    code: "ko",
+    flag: ko.flag,
+    label: ko.label,
+    short: ko.shortLabel,
+  },
 ];
 
 /** Globe dropdown language selector — compact on mobile, full label on desktop. */
