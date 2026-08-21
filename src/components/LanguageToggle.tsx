@@ -4,6 +4,7 @@ import { useLang, type Lang } from "@/i18n/LanguageContext";
 import { en } from "@/i18n/en";
 import { km } from "@/i18n/km";
 import { zh } from "@/i18n/zh";
+import { cn } from "@/utils/cn";
 
 const OPTIONS: { code: Lang; flag: string; label: string; short: string }[] = [
   { code: "en", flag: en.flag, label: en.label, short: en.shortLabel },
