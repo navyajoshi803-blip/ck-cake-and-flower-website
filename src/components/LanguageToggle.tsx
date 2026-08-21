@@ -1,15 +1,18 @@
+```tsx
 import { useEffect, useRef, useState } from "react";
 import { Check, ChevronDown, Globe } from "lucide-react";
 import { useLang, type Lang } from "@/i18n/LanguageContext";
 import { en } from "@/i18n/en";
 import { km } from "@/i18n/km";
 import { zh } from "@/i18n/zh";
+import { ko } from "@/i18n/ko";
 import { cn } from "@/utils/cn";
 
 const OPTIONS: { code: Lang; flag: string; label: string; short: string }[] = [
   { code: "en", flag: en.flag, label: en.label, short: en.shortLabel },
   { code: "km", flag: km.flag, label: km.label, short: km.shortLabel },
   { code: "zh", flag: zh.flag, label: zh.label, short: zh.shortLabel },
+  { code: "ko", flag: ko.flag, label: ko.label, short: ko.shortLabel },
 ];
 
 /** Globe dropdown language selector — compact on mobile, full label on desktop. */
@@ -27,12 +30,22 @@ export default function LanguageToggle({
 
   useEffect(() => {
     if (!open) return;
+
     const onClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
     };
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
+
     return () => {
       document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKey);
@@ -55,12 +68,18 @@ export default function LanguageToggle({
         )}
       >
         <Globe className="h-4 w-4 shrink-0" aria-hidden />
+
         <span aria-hidden className="text-base leading-none">
           {current.flag}
         </span>
+
         <span className="hidden sm:inline">{current.short}</span>
+
         <ChevronDown
-          className={cn("h-3.5 w-3.5 shrink-0 transition-transform", open && "rotate-180")}
+          className={cn(
+            "h-3.5 w-3.5 shrink-0 transition-transform",
+            open && "rotate-180"
+          )}
           aria-hidden
         />
       </button>
@@ -76,6 +95,7 @@ export default function LanguageToggle({
         >
           {OPTIONS.map((opt) => {
             const active = opt.code === lang;
+
             return (
               <li key={opt.code}>
                 <button
@@ -88,14 +108,20 @@ export default function LanguageToggle({
                   }}
                   className={cn(
                     "flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-bold transition-colors",
-                    active ? "bg-blush-100 text-rose-600" : "text-cocoa-700 hover:bg-cream-100"
+                    active
+                      ? "bg-blush-100 text-rose-600"
+                      : "text-cocoa-700 hover:bg-cream-100"
                   )}
                 >
                   <span aria-hidden className="text-base leading-none">
                     {opt.flag}
                   </span>
+
                   <span className="flex-1">{opt.label}</span>
-                  {active && <Check className="h-4 w-4 shrink-0" aria-hidden />}
+
+                  {active && (
+                    <Check className="h-4 w-4 shrink-0" aria-hidden />
+                  )}
                 </button>
               </li>
             );
@@ -105,3 +131,4 @@ export default function LanguageToggle({
     </div>
   );
 }
+```
