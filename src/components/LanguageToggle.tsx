@@ -3,11 +3,12 @@ import { Check, ChevronDown, Globe } from "lucide-react";
 import { useLang, type Lang } from "@/i18n/LanguageContext";
 import { en } from "@/i18n/en";
 import { km } from "@/i18n/km";
-import { cn } from "@/utils/cn";
+import { zh } from "@/i18n/zh";
 
 const OPTIONS: { code: Lang; flag: string; label: string; short: string }[] = [
   { code: "en", flag: en.flag, label: en.label, short: en.shortLabel },
   { code: "km", flag: km.flag, label: km.label, short: km.shortLabel },
+  { code: "zh", flag: zh.flag, label: zh.label, short: zh.shortLabel },
 ];
 
 /** Globe dropdown language selector — compact on mobile, full label on desktop. */
