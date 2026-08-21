@@ -9,10 +9,11 @@ import {
 } from "react";
 import { en, type Translation } from "./en";
 import { km } from "./km";
+import { zh } from "./zh";
 
-export type Lang = "en" | "km";
+export type Lang = "en" | "km" | "zh";
 
-const DICTIONARIES: Record<Lang, Translation> = { en, km };
+const DICTIONARIES: Record<Lang, Translation> = { en, km, zh };
 const STORAGE_KEY = "ck-lang";
 
 interface LanguageContextValue {
@@ -30,7 +31,7 @@ function detectInitialLang(): Lang {
   if (typeof window === "undefined") return "en";
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "en" || stored === "km") return stored;
+    if (stored === "en" || stored === "km" || stored === "zh") return stored;
   } catch {
     /* localStorage unavailable — fall through to browser detection */
   }
