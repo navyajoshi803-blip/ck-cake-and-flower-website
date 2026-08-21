@@ -1,4 +1,3 @@
-```tsx
 import { useEffect, useRef, useState } from "react";
 import { Check, ChevronDown, Globe } from "lucide-react";
 import { useLang, type Lang } from "@/i18n/LanguageContext";
@@ -156,4 +155,3 @@ export default function LanguageToggle({
     </div>
   );
 }
-```

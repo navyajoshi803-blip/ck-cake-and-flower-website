@@ -1,4 +1,3 @@
-```ts
 import { en, type Translation } from "./en";
 
 /** Korean translation. Falls back to English for any future strings not yet translated. */
@@ -388,4 +387,3 @@ export const ko: Translation = {
     },
   },
 };
-```
